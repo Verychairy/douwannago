@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do you wanna go out with me?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #container {
+            text-align: center;
+            position: relative;
+        }
+        #question {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 15px;
+            transition: background-color 0.3s;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #yes {
+            background-color: #b3ffb3;
+            color: #004d00;
+            bottom: 20%;
+            z-index: 1; /* yes 버튼이 no 버튼 위에 나타나도록 설정 */
+        }
+        #yes:hover {
+            background-color: #99e699;
+        }
+        #no {
+            background-color: #ff9999;
+            color: #4d0000;
+            top: 20%;
+            z-index: 0; /* no 버튼이 가장 아래에 나타나도록 설정 */
+        }
+        #gif-container {
+            margin-top: 30px;
+        }
+        #yeppie-text {
+            font-size: 24px;
+            color: #004d00;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="question">Do you wanna go out with me?</div>
+        <button id="yes" class="button">Yes</button>
+        <button id="no" class="button">No</button>
+    </div>
+
+    <div id="gif-container"></div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const gifContainer = document.getElementById('gif-container');
+
+        noButton.addEventListener('mousemove', () => {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        const yesButton = document.getElementById('yes');
+        yesButton.addEventListener('click', () => {
+            gifContainer.innerHTML = `
+                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/45445ef4-477f-4cc9-a899-2eec3bacced7/ddol2r5-a9bafb0f-9009-46e4-b4a5-b7bbb4202855.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ1NDQ1ZWY0LTQ3N2YtNGNjOS1hODk5LTJlZWMzYmFjY2VkN1wvZGRvbDJyNS1hOWJhZmIwZi05MDA5LTQ2ZTQtYjRhNS1iN2JiYjQyMDI4NTUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.1FXh74hf6d3ll-gcYXIb9AFF9tIZ_bWLyKXFOs4osM4" style="max-width: 100%; height: auto;" />
+                <div id="yeppie-text">yeppieeeeee!!!!!</div>
+            `;
+        });
+    </script>
+</body>
+</html>
